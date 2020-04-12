@@ -29,6 +29,7 @@ export default function encurtadorURL() {
       <Text style = {{ color: '#F7DF1E' }}>Encurtar</Text>
     </TouchableOpacity>
 
+      <Text style={styles.finalUrl}>https://culttly.com/NomeURLdele</Text>
     </View>
   );
 }
@@ -60,7 +61,20 @@ const styles = StyleSheet.create({
   },
 
   shortBtn:{
-    backgroundColor: '#ff7c7c'
+    backgroundColor: '#ff7c7c',
+    borderRadius: 20 ,
+    height: 40,
+    width: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  finalUrl:{
+    height: 40,
+    width: '80%',
+    marginTop: 20,
+    fontSize: 20,
+    textAlign: 'center'
+    
   }
 })
 
