@@ -1064,6 +1064,11 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
+"@react-native-community/clipboard@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/clipboard/-/clipboard-1.2.1.tgz#ecf3e348dacd4ce9be25da9f0443bd748afda774"
+  integrity sha512-w/KLmYPeGuYZXxslQWinlYJdNvSFoOV2KIq7VGj93VEn8HEIZVKcOSIHJMZMh8jugAjsvVCcmkffKk7aXTVfvQ==
+
 "@react-native-community/eslint-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-config/-/eslint-config-1.0.0.tgz#884288e91da7599e35cb34258ecf14a58a7cab35"

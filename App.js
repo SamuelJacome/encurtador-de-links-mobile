@@ -14,6 +14,7 @@ import { View,
 export default function encurtadorURL() {
   const [url, setUrl] = useState('');
   const [name, setName] = useState('');
+  const [urlFinal, setUrlFinal] = useState('');
 
   const short = async () => {
     if(url.includes('https://')|| url.includes('https://')){
@@ -28,9 +29,14 @@ export default function encurtadorURL() {
           alert('url invalida');
           return;
         }
-        console.log(data);
+        setUrlFinal(data.url.shortLink);
+        Keyboard.dismiss();
       })
     }
+  }
+
+  function copyUrl(){
+    Clipboard.setString(urlFinal);
   }
 
   return (
@@ -54,10 +60,13 @@ export default function encurtadorURL() {
 
  
     <TouchableOpacity onPress={()=> short()} style={styles.shortBtn}>
-      <Text style = {{ color: '#FFF' }}>Encurtar</Text>
+      <Text style = {{ color: '#FFF', fontWeight: 'bold', fontSize: 20, }}>Encurtar</Text>
     </TouchableOpacity>
 
-      <Text style={styles.finalUrl}>https://culttly.com/NomeURLdele</Text>
+
+    <TouchableWithoutFeedback onPress={ urlFinal ? copyUrl: () => {}}>
+      <Text style={styles.finalUrl}>{urlFinal}</Text>
+    </TouchableWithoutFeedback>
     </View>
 
     </TouchableWithoutFeedback>
@@ -91,8 +100,8 @@ const styles = StyleSheet.create({
   },
 
   shortBtn:{
-    backgroundColor: '#ff7c7c',
-    borderRadius: 20 ,
+    backgroundColor: '#1076F7',
+    borderRadius: 4 ,
     height: 40,
     width: '80%',
     justifyContent: 'center',
