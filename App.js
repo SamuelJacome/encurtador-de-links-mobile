@@ -4,13 +4,10 @@ import { View,
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  Clipboard,
   Keyboard,
   TouchableWithoutFeedback } from 'react-native';
+import Clipboard from '@react-native-community/clipboard';
 
-// import { Container } from './styles';
-
-// $json = file_get_contents(https://cutt.ly/api/api.php?key=[API_KEY]&short=[URL_YOU_WANT_SHORTEN]&name=[CUSTOM_URL_ALIAS]);
 export default function encurtadorURL() {
   const [url, setUrl] = useState('');
   const [name, setName] = useState('');
