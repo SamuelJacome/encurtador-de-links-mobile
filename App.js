@@ -1,12 +1,40 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Clipboard,
+  Keyboard,
+  TouchableWithoutFeedback } from 'react-native';
 
 // import { Container } from './styles';
 
+// $json = file_get_contents(https://cutt.ly/api/api.php?key=[API_KEY]&short=[URL_YOU_WANT_SHORTEN]&name=[CUSTOM_URL_ALIAS]);
 export default function encurtadorURL() {
   const [url, setUrl] = useState('');
   const [name, setName] = useState('');
+
+  const short = async () => {
+    if(url.includes('https://')|| url.includes('https://')){
+      await fetch(`https://cutt.ly/api/api.php?key=fea068531673e58fa06dd7131461ed0013904&short=${url}&name=${name}`)
+      .then(async res =>{
+        const data = await res.json();
+        if(data.url.status === 3 ){
+          alert('Esse nome já está em uso, escolha outro');
+            return;
+        }
+        if(data.url.status === 2){
+          alert('url invalida');
+          return;
+        }
+        console.log(data);
+      })
+    }
+  }
+
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style = {styles.container}>
       <Text style = {styles.title}>url
         <Text style = {{ color: '#1076F7'}}>Sujeito</Text>
@@ -25,12 +53,14 @@ export default function encurtadorURL() {
       />
 
  
-    <TouchableOpacity onPress={()=>{}} style={styles.shortBtn}>
-      <Text style = {{ color: '#F7DF1E' }}>Encurtar</Text>
+    <TouchableOpacity onPress={()=> short()} style={styles.shortBtn}>
+      <Text style = {{ color: '#FFF' }}>Encurtar</Text>
     </TouchableOpacity>
 
       <Text style={styles.finalUrl}>https://culttly.com/NomeURLdele</Text>
     </View>
+
+    </TouchableWithoutFeedback>
   );
 }
 
